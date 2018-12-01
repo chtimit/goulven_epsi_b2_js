@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo WebComponents</title>
+	<script type="text/javascript">
+		function test_temp()
+		{
+			const temp = document.getElementById("ex_temp");
+			const div = document.getElementById("div");
+			const temp_clone = temp.content.cloneNode(true);
+			div.appendChild(temp_clone);
+		}
+
+		class textTest extends HTMLElement {
+			constructor() {
+				super();
+				const shadowRoot= this.attachShadow({mode: 'open'});
+				shadowRoot.innerHTML = 'oui';
+			}
+		}
+
+		customElements.define('text-test', textTest);
+	</script>
+</head>
+<body>
+	<template id="ex_temp">
+		<p>ceci est un template!</p>
+	</template>
+	<button onclick="test_temp()">tester la template</button>
+	<div id="div"></div>
+	<text-test>
+</body>
+</html>
